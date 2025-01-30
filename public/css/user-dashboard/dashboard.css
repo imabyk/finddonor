@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900$display=swap');
+
+.display-none{
+    display: none !important;
+}
+
+/*----SIDE BAR-------------*/
+.sidebar{
+    background-color: #bd1b28;
+    height: 100%;
+    width:310px;
+    position: fixed;
+    left: 0;
+    margin-top: 0px;
+    z-index: 99;
+}
+
+.side-container{
+    margin-top: 200px;
+  
+    width: 100%;
+    height: 80%;
+    
+}
+
+.side-container a{
+    display: block;
+    text-align: end;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.7em;
+    line-height: 60px;
+    padding-right: 40px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.side-container a:hover{
+    background-color: #fff;
+    color:#d03541;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.side-container a:active{
+    color: #fff;
+    background-color: #9e1420;
+ 
+    text-decoration: none;
+}
+.side-container a:focus{
+    color: #d03541;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+
+
+/*---ELEMENTS STYLINGS-----*/
+
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-left: 210px;
+    padding-top: 120px;
+    
+}
+.card-table{
+    border:0;
+    background-color: #fff;
+    box-shadow: 0 0 16px 13px rgba(110, 110, 110, 0.274);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 870px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin:40px
+
+
+}
+
+.card-form{
+    border:0;
+    background-color: #fff;
+    box-shadow: 0 0 10px 2px rgba(110, 110, 110, 0.100);
+    border-radius: 20px;
+    width:500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+
+}
+
+.card-form h2{
+    color: #d03541;
+    font-size: 2em;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    color: #c42b37;
+    padding: 20px;
+}
+
+.card{
+    border:0;
+    background-color: #fff;
+    box-shadow: 0 0 15px 6px rgba(110, 110, 110, 0.200);
+    border-radius: 20px;
+    height:250px;
+    width:250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin:40px
+
+}
+
+.profile-pic{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-card{
+    width: 100%;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.card-info-table{
+    width:100%;
+    padding: 30px;
+}
+
+.card-info-table td{
+    padding: 20px;
+}
+
+h4{
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: rgb(109, 108, 108);
+    
+    letter-spacing: .1em;
+}
+
+table h5{
+    font-size: .85em;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: rgb(53, 52, 52);
+}
+
+
+
+/*-- TOGGLE BUTTON --*/
+
+input[type="checkbox"]{
+    position: relative;
+     width: 60px;
+     height: 30px;
+     -webkit-appearance: none;
+     background-color: #c6c6c6;
+     border-radius: 15px;
+     box-shadow: inset 0 0 5px rgba(0,0,0,.35);
+     transition: 0.5s;
+     margin: 20px;
+     outline: none;
+}
+input[type="checkbox"]:hover{
+    cursor: pointer;
+    outline: none;
+}
+input:checked[type="checkbox"]{
+    background-color: #d03541;
+    outline: none;
+}
+input[type="checkbox"]:before{
+    content:""; 
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,.35);
+    transition: .5s;
+
+}
+input:checked[type="checkbox"]:before{
+    left: 30px;
+
+}
+
+/*-- RESPONSIVENESS OF ELEMENTS --*/
+
+
+@media screen and (max-width:768px){
+
+    .card-table{
+        border:0;
+        background-color: #fff;
+        box-shadow: 0 0 0px 0px rgba(110, 110, 110, 0.274);
+    }
+
+    .card-form{
+        border:0;
+        background-color: #fff;
+        box-shadow: 0 0 0px 0px rgba(110, 110, 110, 0.274);
+        border-radius: 20px;
+        width:100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    
+    
+    }
+
+
+    .sidebar{
+        background-color: #a31621;
+        height: 60px;
+        width:100%;
+        position: sticky;
+        top: 80px;
+        text-align: center;
+    }
+    
+    .side-container{
+        margin-top: 0px;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-around;
+        align-items: flex-end;
+        align-content: flex-end;
+        margin-left: 20px;
+        width: 100%;
+        height: 100%;
+        
+    }
+    .side-container div{
+
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .side-container a{
+        color: #ffd5d9;
+        font-size: 1.3em;
+        height: 60px;
+        font-weight: 500;
+    }
+    
+    .side-container a:hover,.side-container a:focus, .side-container a:active{
+        color:#fff;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .card-wrapper{
+        margin-left: auto;
+        padding-top: 100px;
+    }
+    .card{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media screen and (min-width:768px){
+
+
+    .card-wrapper{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        margin: 30px;
+    }
+
+}
+
+/*-- ANIMATIONS OF DASHBOARD ELEMENT --*/
+
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.card:nth-child(1){
+    animation: fadeIn .3s 0s backwards;
+}
+.card:nth-child(2){
+    animation: fadeIn .3s .5s backwards;
+}
+.card:nth-child(3){
+    animation: fadeIn .3s 1s backwards;
+}
+
+.card:nth-child(4){
+    animation: fadeIn .3s 1s backwards;
+}
+.card-table{
+    animation: fadeIn .3s 1.5s backwards;
+}
+.card-form{
+    animation: fadeIn .5s backwards;
+}

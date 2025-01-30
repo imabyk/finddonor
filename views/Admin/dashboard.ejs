@@ -1,0 +1,474 @@
+<head>
+	<title>Admin Dashboard || Blood Links</title>
+
+	<!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+		integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+	<!-- Font Awesome JS -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+		integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+		crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+		integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/public/css/admin.css">
+
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<h3>Blood Links</h3>
+				<strong>BL</strong>
+			</div>
+
+			<ul class="list-unstyled components" style="cursor: pointer;">
+				<li id="dashboard_link">
+					<a>
+						<i class="fas fa-home"></i>
+						Dashboard
+					</a>
+				</li>
+				<li id="request_link">
+					<a>
+						<i class="fas fa-search"></i>
+						Requests
+					</a>
+
+				</li>
+				<li id="donor_link">
+					<a>
+						<i class="fas fa-user"></i>
+						Donors
+					</a>
+				</li>
+				<li id="volunteer_link">
+					<a>
+						<i class="fas fa-hands-helping"></i>
+						Volunteers
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i>
+						<span>Toggle Sidebar</span>
+					</button>
+					<a href="/admin/logout" class="btn btn-dark d-inline-block ml-auto" type="button">
+						Logout
+					</a>
+				</div>
+			</nav>
+
+			<div id="dashboard">
+				<div class="row text-center ">
+					<div class="col-lg-12">
+						<h1 class="h1-responsive font-weight-bold text-danger">Dashboard</h1>
+					</div>
+				</div>
+				<hr>
+				<div class="row col-12">
+					<div class="col-md-6">
+						<div class="card mb-5">
+							<div class="card-header">
+								<h3 class="text-danger">Requests</h3>
+							</div>
+							<div class="card-body">
+								<h5 class="card-title">Today:- <%= todayrequests %></h5>
+								<h5 class="card-title">Total Requests:- <%= requests %></h5>
+							</div>
+						</div>
+						<div class="card mb-5">
+							<div class="card-header">
+								<h3 class="text-danger">Donors</h3>
+							</div>
+							<div class="card-body">
+								<h5 class="card-title"><%= donors %></h5>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<h3 class="text-danger">Volunteers</h3>
+							</div>
+							<div class="card-body">
+								<h5 class="card-title"><%= volunteers %></h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="text-danger">Add Volunteer</h3>
+							</div>
+							<div class="card-body">
+								<form action="/admin/volunteer" method="post">
+									<div class="form-group">
+										<label for="name">Name</label>
+										<input type="text" class="form-control" name="name">
+									</div>
+									<div class="form-group">
+										<label for="mobileno">Mobile Number</label>
+										<input type="text" class="form-control" name="mobileno">
+									</div>
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input type="email" class="form-control" name="email">
+									</div>
+									<div class="form-group">
+										<label for="country">Country</label>
+										<input type="text" class="form-control" name="country">
+									</div>
+									<div class="form-group">
+										<label for="state">State</label>
+										<input type="text" class="form-control" name="state">
+									</div>
+									<div class="form-group">
+										<label for="city">City</label>
+										<input type="text" class="form-control" name="city">
+									</div>
+									<div class="form-group">
+										<label for="about">About</label>
+										<textarea type="text" class="form-control" name="about" rows="3"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="why">Why</label>
+										<textarea type="text" class="form-control" name="why" rows="3"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="achievements">Achievements</label>
+										<textarea type="text" class="form-control" name="achievements"
+											rows="3"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div id="request" class="d-none">
+				<div class="row text-center ">
+					<div class="col-lg-12">
+						<h1 class="h1-responsive font-weight-bold text-danger">Requests</h1>
+					</div>
+				</div>
+				<table id="example" class="table table-striped table-bordered requesttable" style="width:100%">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Blood Group</th>
+							<th>Mobile No.</th>
+							<th>Country</th>
+							<th>State</th>
+							<th>City</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody id="requesthead">
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Blood Group</th>
+							<th>Mobile No.</th>
+							<th>Country</th>
+							<th>State</th>
+							<th>City</th>
+							<th>Date</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+			<div id="donor" class="d-none">
+				<div class="row text-center ">
+					<div class="col-lg-12">
+						<h1 class="h1-responsive font-weight-bold text-danger">Donors</h1>
+					</div>
+				</div>
+				<table id="example1" class="table table-striped table-bordered donortable" style="width:100%">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Blood Group</th>
+							<th>Mobile No.</th>
+							<th>Country</th>
+							<th>State</th>
+							<th>City</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody id="donorhead">
+
+
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Blood Group</th>
+							<th>Mobile No.</th>
+							<th>Country</th>
+							<th>State</th>
+							<th>City</th>
+							<th>Date</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+			<div id="volunteer" class="d-none">
+				<div class="row text-center ">
+					<div class="col-lg-12">
+						<h1 class="h1-responsive font-weight-bold text-danger">Volunteers</h1>
+					</div>
+				</div>
+				<table id="example2" class="table table-striped table-bordered volunteertable" style="width:100%">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Mobile No.</th>
+							<th>Email</th>
+							<th>Country</th>
+							<th>State</th>
+							<th>City</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody id="volunteerhead">
+
+
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Mobile No.</th>
+							<th>Email</th>
+							<th>Country</th>
+							<th>State</th>
+							<th>City</th>
+							<th>Date</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$('#sidebarCollapse').on('click', function () {
+				$('#sidebar').toggleClass('active');
+			});
+
+			$("#dashboard_link").click(function () {
+				$("#dashboard").removeClass("d-none");
+				$("#request").addClass("d-none");
+				$("#donor").addClass("d-none");
+				$("#volunteer").addClass("d-none");
+			});
+
+			$("#request_link").click(function () {
+				$("#dashboard").addClass("d-none");
+				$("#request").removeClass("d-none");
+				$("#donor").addClass("d-none");
+				$("#volunteer").addClass("d-none");
+				$(".requesttable").attr("id", "examplec");
+				$(".donortable").attr("id", "example1");
+				$(".volunteertable").attr("id", "example2");
+				$('#examplec').DataTable(
+					{
+						"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+						"iDisplayLength": 5,
+						"bDestroy": true
+					}
+				)
+
+				$.ajax({
+					url: "/admin/requests",
+					method: "GET",
+					contentType: 'application/json',
+					success: function (response) {
+						if (response) {
+							count = 0;
+							console.log(response);
+							response.forEach(request => {
+								request.date = request.date.split("T")[0];
+								if (count == 0) {
+									count++;
+									document.getElementById("requesthead").innerHTML = `<tr>
+							<td>${request.name}</td>
+							<td>${request.bloodgroup}</td>
+							<td>${request.mobileno}</td>
+							<td>${request.country}</td>
+							<td>${request.state}</td>
+							<td>${request.city}</td>
+							<td>${request.date}</td>
+						</tr>`
+								}
+								else {
+									document.getElementById("requesthead").innerHTML += `<tr>
+							<td>${request.name}</td>
+							<td>${request.bloodgroup}</td>
+							<td>${request.mobileno}</td>
+							<td>${request.country}</td>
+							<td>${request.state}</td>
+							<td>${request.city}</td>
+							<td>${request.date}</td>
+						</tr>`
+								}
+
+							});
+
+						} else {
+							console.log("oops error")
+						}
+					}
+				});
+			});
+
+			$("#donor_link").click(function () {
+				$("#dashboard").addClass("d-none");
+				$("#request").addClass("d-none");
+				$("#donor").removeClass("d-none");
+				$("#volunteer").addClass("d-none");
+				$(".requesttable").attr("id", "examplee");
+				$(".volunteertable").attr("id", "example2");
+				$(".donortable").attr("id", "examples");
+				$('#examples').DataTable(
+					{
+						"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+						"iDisplayLength": 5,
+						"bDestroy": true
+					}
+				)
+				$.ajax({
+					url: "/admin/donors",
+					method: "GET",
+					contentType: 'application/json',
+					success: function (response) {
+						if (response) {
+							count = 0;
+							console.log(response);
+							response.forEach(donor => {
+								donor.date = donor.date.split("T")[0];
+								if (count == 0) {
+									count++;
+									document.getElementById("donorhead").innerHTML = `<tr>
+							<td>${donor.name}</td>
+							<td>${donor.bloodgroup}</td>
+							<td>${donor.mobileno}</td>
+							<td>${donor.country}</td>
+							<td>${donor.state}</td>
+							<td>${donor.city}</td>
+							<td>${donor.date}</td>
+						</tr>`
+								}
+								else {
+									document.getElementById("donorhead").innerHTML += `<tr>
+							<td>${donor.name}</td>
+							<td>${donor.bloodgroup}</td>
+							<td>${donor.mobileno}</td>
+							<td>${donor.country}</td>
+							<td>${donor.state}</td>
+							<td>${donor.city}</td>
+							<td>${donor.date}</td>
+						</tr>`
+								}
+
+							});
+
+						} else {
+							console.log("oops error")
+						}
+					}
+				});
+			});
+
+			$("#volunteer_link").click(function () {
+				$("#dashboard").addClass("d-none");
+				$("#request").addClass("d-none");
+				$("#donor").addClass("d-none");
+				$("#volunteer").removeClass("d-none");
+				$(".requesttable").attr("id", "example2");
+				$(".donortable").attr("id", "example1");
+
+				$(".volunteertable").attr("id", "examplee");
+				$('#examplee').DataTable(
+					{
+						"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+						"iDisplayLength": 5,
+						"bDestroy": true
+					}
+				)
+
+				$.ajax({
+					url: "/admin/volunteer",
+					method: "GET",
+					contentType: 'application/json',
+					success: function (responsee) {
+						if (responsee) {
+							count = 0;
+							console.log(responsee);
+							responsee.forEach(volunteer => {
+								volunteer.date = volunteer.date.split("T")[0];
+								if (count == 0) {
+									count++;
+									document.getElementById("volunteerhead").innerHTML = `<tr>
+									<td>${volunteer.name}</td>
+									<td>${volunteer.mobileno}</td>
+									<td>${volunteer.email}</td>
+									<td>${volunteer.country}</td>
+									<td>${volunteer.state}</td>
+									<td>${volunteer.city}</td>
+									<td>${volunteer.date}</td>
+								</tr>`
+								}
+								else {
+									document.getElementById("volunteerhead").innerHTML += `<tr>
+								<td>${volunteer.name}</td>
+								<td>${volunteer.mobileno}</td>
+								<td>${volunteer.email}</td>
+								<td>${volunteer.country}</td>
+								<td>${volunteer.state}</td>
+								<td>${volunteer.city}</td>
+								<td>${volunteer.date}</td>
+								</tr>`
+								}
+
+							});
+						} else {
+							console.log("oops error")
+						}
+					}
+				});
+
+
+			});
+		});
+
+	</script>
+
+</body>

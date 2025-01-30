@@ -1,0 +1,47 @@
+.social-link{
+  text-decoration: none;
+}
+
+.social-link:hover, .social-link:focus{
+  text-decoration: none;
+}
+.social-link > i{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(145, 144, 144);
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 2.2rem;
+  }
+
+  .h3{
+    color: rgb(105, 104, 104);
+  }
+
+  .card-shadow{
+    box-shadow: 0 0 10px 1px rgba(197, 197, 197, 0.519);
+    border-radius: 10px;
+  }
+
+  .social-link > i:hover,
+  .social-link > i:focus {
+    background: #e04f5b; 
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #e04f5b;
+  }
+
+
+  @media only screen and (max-width:600px) {
+    .social-link > i{
+      width:35px;
+      height: 35px;
+      font-size: 2.5rem;
+    }
+  
+  }

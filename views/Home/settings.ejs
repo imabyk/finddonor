@@ -1,0 +1,60 @@
+<div class="card-wrapper">
+    <div class="card">
+        <h4>
+            Available status
+        </h4>
+        <input type="checkbox" name="toggle" id="status" onclick="changestatus()">
+    </div>
+    <div class="card">
+        <h4>
+            CHANGE PASSWORD 
+        </h4>
+        
+           <div class="pwd-chng-btn">
+                <a href="/forgot-password">
+                Click Here
+                </a>
+           </div>
+        
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        status = "<%= user.status %>"
+        if (status == 1) {
+            $('#status').attr('checked', 'Checked');
+
+        }
+        else {
+            $('#status').removeAttr('checked');
+
+        }
+
+    });
+    function changestatus() {
+        data = {};
+        if ($("#status").attr("Checked")) {
+            status_value = 0
+        }
+        else {
+            status_value = 1
+        }
+        data.status = status_value
+        data.id = "<%= user._id %>",
+            $.ajax({
+                url: "/changestatus",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response.status == 1) {
+                        $('#status').attr('checked', 'Checked');
+                    }
+                    else {
+                        $('#status').removeAttr('checked');
+                    }
+                }
+            });
+    }
+</script>
+<!--  -->

@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900$display=swap');
+
+
+
+.table-container{
+    position: relative;
+    width:100%;
+    height: 100%;
+}
+ 
+.table-container .table input{
+    height: 30px;
+    width: 70px;
+    color: #fff;
+    background-color: #d03541;
+    border-radius: 5px;
+    border:0px;
+    transition: 0.5s ease;
+    font-size: 0.9em;
+}
+
+.table-container .table input:hover{
+    background-color: #a50d19;
+}
+
+
+.table{
+	  width: 100%;
+    border-collapse: collapse;
+}
+
+.table td,.table th{
+  padding:12px 15px;
+  text-align: center;
+  font-size:16px;
+}
+
+
+.table th{
+	background-color: #d03541;
+	color:#ffffff;
+}
+
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+
+/*
+ * Control feature layout
+ */
+.dataTables_wrapper {
+    position: absolute;
+    clear: both;
+    *zoom: 1;
+    zoom: 1;
+    width: 100%;
+    
+  }
+  .dataTables_wrapper .dataTables_length {
+    float: left;
+  }
+  .dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right;
+    padding: 1.2em;
+    color:#d03541
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    margin-left: 0.5em;
+    height: 30px;
+    min-width:100px;
+    border:2px solid #d03541;
+    color: #d03541;
+    border-radius: 4px;
+    font-size: 1em;
+    text-align: center;
+  }
+  .dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    padding-top: 0.755em;
+  }
+  .dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: center;
+    padding: 1.5em 1em 1.5em;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+  color: #fff;
+  background-color: #d03541;
+  border-radius: 4px;
+  border:0px;
+  transition: 0.5s ease;
+  font-weight: 300;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 5px;
+  height: 30px;
+  max-width: 70px;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0.4em 1em;
+  text-decoration: none !important;
+  cursor: pointer;
+  *cursor: hand;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background-color: #a50d19;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  cursor: default;
+  color: #666 !important;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #a50d19;;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    outline: none;
+    background-color: #5e070e;
+  }
+
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper dataTables_filter,
+  .dataTables_wrapper .dataTables_paginate {
+    color: #333;
+  }
+  table.dataTable {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  }
+
+
+
+/*responsive*/
+ 
+@media (max-width: 600px){
+
+  .dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right;
+    padding: 2em;
+    
+  }
+
+  .pagination-container{
+    width: 100%;
+  }
+
+  .pagination-container div{
+    justify-content: center;
+  }
+    
+
+  .table-container{
+    width: 100%;
+    left: 0%;
+       
+  }
+
+	.table thead{
+		display: none;
+	}
+
+	.table, .table tbody, .table tr, .table td{
+    display: block;
+    width: 100%;
+  }
+  .table{
+    padding: 20px;
+    box-shadow:0 2px 0px rgba(64,64,64,.7);
+  }
+	.table tr{
+    margin-bottom:15px;
+    border-radius: 7px;
+    box-shadow: 0 2px 10px rgba(85, 85, 85, 0.473);
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+    position: relative;
+    border:0;
+	}
+	.table td::before{
+		content: attr(data-lable);
+		position: absolute;
+		left:0;
+    width: 50%;
+    color: #d03541;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+}
+

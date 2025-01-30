@@ -1,0 +1,279 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/report_modal.css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="/public/css/search-table.css">
+
+
+</head>
+
+<%- include header.ejs %>
+<section style="min-height: 30vh;">
+
+</section>
+
+
+<section class="section-tbl-height">
+    <div class="search-box">
+        <table>
+            <tr>
+                <th colspan="4">
+                    <h1>You searched for</h1>
+                </th>
+            </tr>
+            <tr>
+                <td>blood group</td>
+                <td>Country</td>
+                <td>State</td>
+                <td>District</td>
+            </tr>
+            <!-- <% if(dataa.length>=1) {%> -->
+            <tr>
+                <td><%= bloodgroup %></td>
+                <td><%= country %></td>
+                <td><%= state %></td>
+                <td><%= district %></td>
+
+            </tr>
+            <!-- <%}%> -->
+        </table>
+    </div>
+
+
+    <div class="table-container">
+        <table id="myTable" class="src-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Bloodgroup</th>
+                    <th>City</th>
+                    <th>Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(dataa.length>0){ dataa.forEach(person=>{ %>
+                <tr>
+                    <td data-lable="Name"><%= person.name %></td>
+                    <td data-lable="Mobile"><%= person.mobileno %></td>
+                    <td data-lable="Blood Group"><%= person.bloodgroup %></td>
+                    <td data-lable="City"><%= person.city %></td>
+
+                    <td data-lable="Report"><button id="<%= person.mobileno %>" data-toggle="modal"
+                            class="report report-btn" data-target="#reportmodal">report</button></td>
+                </tr>
+                <% })} %>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- POPUP MODAL -->
+<div id="msg-popup" class="popup-modal-overlay modal-fadeIn">
+    <div class="popup-modal-main">
+
+        <img src="/public/img/emergency.png" alt="" srcset="">
+        <h3>If you dont found any donor in your city, then try to search in your nearby city</h3>
+        <button id="popup-close">Close</button>
+
+    </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            preventScroll();
+            $('#msg-popup').addClass('display-active');
+        }, 3000);
+
+
+
+    });
+
+    $('#popup-close').click(function () {
+        $('#msg-popup').removeClass('display-active');
+        allowScroll();
+    });
+
+
+    function preventScroll() {
+        $("body").css('overflow', 'hidden');
+    };
+    function allowScroll() {
+        $("body").css('overflow', 'scroll');
+    };
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".report").click(function () {
+            console.log("clicked")
+            $("#reportmodal").css("display", "block");
+            $("#reportmodal").removeClass("fade");
+            console.log($(this).attr("id"))
+            data = {};
+            data.mobileno = $(this).attr("id");
+            $.ajax({
+                url: "/reportmodal",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    $("#nameofreport").html(response.name);
+                    $("#mobnoofreport").html(response.mobileno);
+                    $(".row").css("transition", " !important");
+                    $(".showme").css("opacity", "1 !important");
+
+                }
+            })
+            preventScroll();
+        })
+
+        $("#reportperson").click(function () {
+            console.log("clicked")
+            event.preventDefault();
+            data = {};
+            data.mobileno = document.getElementById("mobnoofreport").innerHTML;
+            data.name = document.getElementById("nameofreport").innerHTML;
+            data.issue = document.getElementById("issues").value;
+            data.description = document.getElementById("description").value;
+            console.log(data);
+            $("#reportmodal").css("display", "none");
+            $(".showme").css("opacity", "1 !important");
+            $(".showme").css("transition", " ");
+            $("#reportmodal").addClass("fade");
+            allowScroll();
+            $.ajax({
+                url: "/reporting",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    console.log("done");
+                }
+            })
+        })
+        $(".close").click(function () {
+            $("#reportmodal").css("display", "none");
+            $(".showme").css("opacity", "1 !important");
+            $(".showme").css("transition", " ");
+            $("#reportmodal").addClass("fade");
+            allowScroll();
+
+        })
+
+        function preventScroll() {
+            $("body").css('overflow', 'hidden');
+        };
+        function allowScroll() {
+            $("body").css('overflow', 'scroll');
+        };
+    })
+</script>
+
+<!-- <button data-toggle="modal" data-target="#reportmodal"><h1>report</h1></button> -->
+
+<div id="reportmodal" class="modal modal-fadeIn" role="dialog">
+    <div class="modal-dialog" role="content">
+        <div class="modal-content modalbg">
+            <div class="modal-header titlered showme">
+                <h4 class="modal-title">you are reporting for</h4>
+                <button type="button" class="close close-btn" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+            <form>
+                <div class="form-group row justify-content-center name-mob showme">
+
+                    <div class="col-sm-5 col-5 align-self-center showme">
+                        <h5 id="nameofreport"></h5>
+                    </div>
+                    <div class="col-sm-5 col-5 align-self-center showme">
+                        <h5 id="mobnoofreport"></h5>
+                    </div>
+                </div>
+
+                <div class="form-group row justify-content-center showme">
+                    <div class="col-sm-10 col-10 align-self-center dropdown-div showme">
+                        <select class=" dropdown" id="issues" name="issues" required>
+                            <option value="phone number not valid">Invalid Mobile Number</option>
+                            <option value="Inappropriate behaviour">Inappropriate behaviour</option>
+                            <option value="Demands Money">Demands Money</option>
+                        </select>
+                        <div class="arrow"></div>
+                    </div>
+
+                </div>
+
+                <div class="form-group row showme">
+                    <div class="col-sm-3 col-3 offset-1 align-self-end">
+                        <label for="description">
+                            <h5>Description:<br>(Optional) </h5>
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6 col-6 offset-1 align-self-start">
+                        <textarea id="description" name="description" rows="5">
+                            </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    <div class="col-sm-11 col-11 ">
+                        <button id="reportperson" class="report-modal-btn">report</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- SCRIPT FOR TABLE FUNCTIONS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/public/js/datatables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "pageLength": 5,
+            "info": false,
+            "ordering": false,
+            "bLengthChange": false,
+            "responsive": true,
+        });
+    });
+
+
+</script>
+
+
+
+
+
+<%- include footer.ejs %>

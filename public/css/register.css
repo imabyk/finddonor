@@ -1,0 +1,172 @@
+
+select{
+    height: 35px;
+}
+
+.containerwrapper{
+    margin-top: 70px;
+}
+
+.register-form {
+    max-width: 500px;
+    padding-left: 50px;
+}
+
+.halfcircle{
+    border-radius: 0px !important;
+    height: 38px !important;
+    border: 1px solid #cccccc !important;
+    font-size: 1em;
+
+}
+
+input:hover{
+    border: 1px solid #c43642 !important;
+}
+
+select:hover{
+    border: 1px solid #c43642 !important;
+}
+
+.halfcircle:focus{
+    box-shadow:0 0 2px 1px #c43642;
+}
+
+.quote{
+    padding-top: 100px;
+}
+
+.quote h1{
+    font-size: 4em;
+    color: #d03541;
+    text-align: right;
+    font-family: 'Gloria Halleluljah', serif;
+    color: #c43642;
+    padding: -25px;
+}
+
+.graycolor{
+    color: #81898F;
+}
+
+.registerhere{
+    color: #d03541; 
+    font-size: 2em;
+}
+
+
+
+
+.register-btn{
+    background: #d03541;;
+    height: 35px;
+    
+    width: 100%;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 10px;
+    
+  }
+.register-btn:hover{
+      background-color: #c43642;
+  }
+
+
+  .dropdown{
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    padding: 0px 15px;
+    cursor: pointer;
+    color: #7b7b7b;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.2s ease;
+}
+.dropdown::-ms-expand{
+    display: none;
+}
+
+.dropdown:hover, .dropdown:focus{
+    color: #000;
+      background: #fafafa;
+      border-color: #d03541;
+      outline: none;
+}
+
+
+@media only screen and (max-width: 768px) and (min-width:481px){
+    
+    .quote{
+        margin: 10px;
+        text-align: center;
+        padding-top: 0px;
+    }
+    .hot h1{
+        font-size: 2em;
+        text-align: center;
+        margin-top: 130px;
+    }
+    .hot img{
+        margin-bottom: -350px;
+        margin-right: -100px;
+    }
+}
+
+@media only screen and (max-width:1024px) and (min-width:769px){
+    .mediumsize{
+        max-width: 300px;
+        max-height: 300px;
+        margin-bottom: -350px;
+        margin-right: -130px;
+    }
+
+    .hot h1{
+        font-size: 2.7em;
+        text-align: center;
+        margin-top: 70px;
+    }
+}
+
+
+.hot img{
+    max-width: 300px;
+    max-height: 300px;
+    margin-top: -70px;
+    margin-left: -80px;
+}
+
+.pictureup{
+    margin-top: -30px;
+}
+
+@media only screen and (max-width:767px){
+    .quote h1{
+        font-size: 2em;
+        text-align: center;
+        justify-content: center;
+    }
+    .hot img{
+        margin-top: 20px;
+        margin-left: -20px;
+    }
+
+}
+
+@media only screen and (max-width:480px){
+    .register-form {
+        padding-left: 0px;
+        text-align: center;
+    }
+
+    .containerwrapper{
+        margin-top: -30px;
+    }
+}

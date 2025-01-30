@@ -1,0 +1,282 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <link rel="stylesheet" href="/public/css/volunteer-table.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-mod.css">
+    <link rel="stylesheet" href="/public/css/knowmore_modal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
+  
+
+
+</head>
+<%- include header.ejs%>
+
+
+
+<section class="size-config">
+    <div id="md-banner">
+        <div class="size-config-img lax" data-lax-translate-y="0 1, 400 -100">
+            <img src="/public/img/volunteer/wave-bg-f.png">
+        </div>
+    </div>
+    <div id="sm-banner">
+        <div class="sm size-config-img lax" data-lax-translate-y="0 1, 400 -100">
+            <img src="/public/img/volunteer/wave-bg-f-sm.png">
+        </div>
+    </div>
+
+    <div class="size-config-content lax" data-lax-translate-y="0 1, 400 -140">
+        <h1>Become a Volunteer</h1>
+        <h2>And become a helping hand to the society</h2>
+    </div>
+</section>
+
+
+
+<div class="container-fluid">
+    <div class="container">
+            <div class="content-padder">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="img-container">
+                            <img src="/public/img/volunteer/img-v-1.png" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="v-content">
+                            <h1 class="v-heading">Take a Leadership Role</h1>
+                            <p class="v-para">Serve on local boards and help with fundraising and marketing programs. Be the
+                                face of
+                                the Find Donor in your community and ensure we are serving your community well. <br>
+                                Work with individuals, groups and companies to register blood donors and promote blood drives.
+                                <br>
+                                Greet and register blood donors.<br><br>
+                            </p>
+                            <a href="https://utkarsh17verma.typeform.com/to/KUGl5XMk" target="blank"><button class="v-button"
+                                    type="button">Become a Volunteer</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content-padder">
+                <div class="row">
+
+
+                    <div class="col-md-6 order-md-2">
+                        <div class="img-container">
+                            <img src="/public/img/volunteer/img-v-2.png" alt="" srcset="">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 order-md-1">
+                        <div class="v-content">
+
+                            <h1 class="v-heading">Educate Others</h1>
+                            <p class="v-para">Educate individuals and groups on how and when they can start to donate blood.
+                                <br>
+                                Guide donors about what to eat and drink after donating blood. <br><br>
+                            </p>
+                            <a href="https://utkarsh17verma.typeform.com/to/KUGl5XMk" target="blank"><button class="v-button"
+                                    type="button">Become a Volunteer</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content-padder">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="img-container">
+                            <img src="/public/img/volunteer/img-v-3.png" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="v-content">
+                            <h1 class="v-heading">Assist with Fundraising Efforts</h1>
+                            <p class="v-para">Support fundraising and special events. <br>
+                                Make calls to thank Find Donor financial donors. <br>
+                                Greet and register blood donors.<br><br>
+                            </p>
+                            <a href="https://utkarsh17verma.typeform.com/to/KUGl5XMk" target="blank"><button class="v-button"
+                                    type="button">Become a Volunteer</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="table-heading">
+        <h1 class="v-heading">Our volunteers in different cities.</h1> 
+    </div>
+</div>
+<section class="section-tbl-height">
+    
+    <div class="table-container">
+        
+        <table id="volunteer-table" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>View More</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% volunteers.forEach(volunteer=>{ %>
+
+                <tr>
+                    <td data-lable="Name"><%= volunteer.name %></td>
+                    <td data-lable="Mobile"><%= volunteer.mobileno %></td>
+                    <td data-lable="Email"><%= volunteer.email %></td>
+                    <td data-lable="City"><%= volunteer.city %></td>
+                    <td data-lable="View More">
+                        <input type="button" id="<%= volunteer._id %>" value="know more"
+                            class="tbl-btn volunt" data-toggle="modal" data-target="#knowmore">
+                    </td>
+                </tr>
+                <%}) %>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+<script src="/public/js/datatables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#volunteer-table').DataTable({
+            "pageLength": 5,
+            "info": false,
+            "ordering": false,
+            "bLengthChange": false,
+        });
+    });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".volunt").click(function () {
+            console.log("clicked")
+            $("#knowmore").css("display", "block");
+            console.log($(this).attr("id"))
+            data = {};
+            data.id = $(this).attr("id");
+
+            $.ajax({
+                url: "/volunteermodal",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+
+                    console.log(response)
+                    $("#volunteername").html(response.name);
+                    // $("#mobnoofreport").html(response.mobileno);
+                    $("#about").html(response.about);
+                    $("#why").html(response.why);
+
+
+                }
+            })
+            preventScroll();
+        });
+
+
+        $(".close").click(function () {
+            $("#knowmore").css("display", "none");
+            allowScroll();
+
+        })
+
+        function preventScroll() {
+            $("body").css('overflow', 'hidden');
+            $(".decorateimg").css('opacity', '1');
+            $(".showme").css('opacity', '1');
+        };
+        function allowScroll() {
+            $("body").css('overflow', 'scroll');
+        };
+    });
+</script>
+
+
+<div id="knowmore" class="modal">
+    <div  class="knowmore-modal-overlay modal">
+        <div class="knowmore-modal-body">
+    
+                <div class="banner">
+                    <img src="/public/img/avatar.png" alt="" srcset="">
+                    <h1 id="volunteername"></h1>
+                </div>
+
+                <div class="content">
+                    <div class="about-sec" data-simplebar>
+                        <h3> About </h3>
+                        <p id="about"></p>
+                    </div>
+                    <div class="about-sec" data-simplebar>
+                        <h3> REASON </h3>
+                        <p id="why"></p>
+                    </div>  
+                    
+                </div>
+
+                <div class="controls">
+                    <a href="https://utkarsh17verma.typeform.com/to/KUGl5XMk" class="volunteer-btn">
+                        BECOME A VOLUNTEER
+                    </a>
+                    
+
+
+                    <button class="close-btn close" data-dismiss="modal">
+                        x
+                    </button>
+
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="/public/js/share.js"></script>
+
+
+<script type="text/javascript" src="/public/js/lax.min.js"></script>
+<script>
+    window.onload = function () {
+        lax.setup() // init
+        const updateLax = () => {
+            lax.update(window.scrollY)
+            window.requestAnimationFrame(updateLax)
+        }
+        window.requestAnimationFrame(updateLax)
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+<%- include footer.ejs%>

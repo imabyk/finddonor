@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172987514-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var GA_TRACKING_ID= '<%= process.env.GA_TRACKING_ID %>' ;
+    gtag('config', GA_TRACKING_ID);
+    </script>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, 
+    maximum-scale=1.0, user-scalable=no" />
+    <title>FindDonor || Fast and easy way to search donors near you</title>
+    <link rel="shortcut icon" type="image/png" href="/public/img/logo.png">
+    <link rel="stylesheet" href="/public/css/preloader.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/public/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-theme.min.css">
+    <!--my DESIGNS-->
+    <link rel="stylesheet" href="/public/css/user-dashboard/navbar-dashboard.css">
+    <!-- <link rel="stylesheet" href="/public/css/user-dashboard/donor-form-noslider.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/public/js/cities.js"></script>
+</head>
+
+<body>
+
+
+    <!--  PRELOADER START -->
+
+    <div class='preloader-wrapper'>
+        <img src="/public/img/preloader.gif" alt="" srcset="">
+        <h1>loading</h1>
+    </div>
+
+    <script>
+        let preloaderWrapper = document.querySelector('.preloader-wrapper');
+    
+        window.addEventListener('load', function () {
+            // spinnerWrapper.style.display = 'none';
+            preloaderWrapper.parentElement.removeChild(preloaderWrapper);
+        });
+    </script>
+
+    <!--  PRELOADER END -->
+
+
+    <header>
+        <a href="/ " class='logo'>
+            <!--<img src="/public/img/findonorlogo.png" alt="FindDonor">--> 
+            FindDonor
+        </a>
+        <ul class="navlinks">
+            <li><a href="/#find_a_donor">Find Donor</a></li>
+            <li><a href="/register">Become Donor</a></li>
+
+
+            <li>
+                <div class="logout-menu">
+                    <button>Team</button>
+                    <ul>
+                        <li><a href="/team">Dev Team</a> </li>
+                        <li><a href="/volunteer">Volunteer</a></li> 
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <div class="logout-menu">
+                    <button id="nav-readmore-btn">Read more</button>
+                    <ul id="nav-readmore">
+                        <li><a href="/blood-facts">Facts</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li>
+                <div class="logout-menu">
+                    <% if(isloggedin!="login"){ %>
+                    <button id="nav-login-btn"><%= isloggedin %></button>
+                    <ul id="nav-login">
+                        <li><a href="/ ">Home</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                    <% }else{ %>
+                    <a href="/login">Login</a>
+                    <% } %>
+                </div>
+            </li>
+        </ul>
+
+
+
+        <div class="lines">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </header>
+    <!-- script for header file -->
+    <script type="text/javascript" src="/public/js/header.js"></script>
+
+
+    <script type="text/javascript">
+        function checkemail() {
+            data = {};
+            data.email = document.getElementById("email").value;
+            $.ajax({
+                url: "/checkemail",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response == "yes") {
+                        document.getElementById('alert-email').innerHTML = "Sorry This email is already in use";
+
+                    } else {
+                        document.getElementById('alert-email').innerHTML = "";
+
+                    }
+                }
+            });
+        }
+    </script>
+    <!--  -->
+    <!--  -->
+    <script type="text/javascript">
+        function checkmobile() {
+            data = {};
+            countrycode = $(".countrycodes");
+            mobilenos = $(".mobilenos");
+            data.mobileno = countrycode.val() + mobilenos.val();
+            console.log(data)
+            $.ajax({
+                url: "/checkmobileno",
+                method: "POST",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response == "yes") {
+                        document.getElementById('alert-phone').innerHTML = "Sorry This mobile number is already in use";
+                        document.getElementById('button').className = "button makedisable";
+                    } else {
+                        document.getElementById('alert-phone').innerHTML = "";
+                        document.getElementById('button').className = "button";
+
+                    }
+                }
+            });
+        }
+    </script>
+    <!--  -->

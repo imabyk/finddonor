@@ -1,0 +1,206 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.simplebar-scrollbar::before {
+    background-color: #d03541;
+  }
+
+
+.display-active{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.knowmore-modal-overlay{
+    position: fixed;
+    height:100vh;
+    width: 100%;
+    background-color: #00000081;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    margin:0;
+    padding: 0;
+}
+
+
+.knowmore-modal-body{
+    position: relative;
+    background-color: #ffffff;
+    height: 425px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+}
+
+.knowmore-modal-body .banner{
+    position: absolute;
+    height: 45%;
+    width: 100%;
+    background-color: #c21a27;
+    border: 10px solid white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top:0;
+}
+
+
+
+.banner img{
+    position: absolute;
+    height: 220px;
+    width: 220px;
+    border: 10px solid #ffffff;
+    border-radius: 50%;
+    top:-60%;
+}
+
+.banner h1{
+    position: absolute;
+    color: white;
+    font-weight: 500;
+    bottom: -3%;
+    text-transform: uppercase;
+}
+
+.knowmore-modal-body .content{
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    top:45%;
+    border-radius: 20px;
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    
+
+}
+
+.content .about-sec{
+    background: #ffffff;
+    margin: 5px;
+    max-height: 75px;
+    width: 98%;
+}
+
+.about-sec h3{
+    text-transform: uppercase;
+    color: #c21a27;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 16px;
+
+}
+
+.about-sec p{
+    text-transform: uppercase;
+    color: #585858;
+    font-weight: 500;
+    font-size: 13px;
+    max-width: 400px;
+
+}
+
+.knowmore-modal-body .controls{
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    bottom:0px;
+    border-radius: 20px;
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.controls .volunteer-btn{
+    height: 40px;
+    width: 170px;
+    background-color: #c21a27;
+    border: none;
+    outline: none;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.controls .volunteer-btn:hover{
+    text-decoration: none;
+    background-color: #a0141f;
+}
+
+.controls .close-btn {
+    height: 40px;
+    width: 40px;
+    background-color: #c21a27;
+    border: none;
+    outline: none;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px;
+    opacity: 1;
+    border-radius: 7px;
+}
+.controls .close-btn:hover{
+    text-decoration: none;
+    background-color: #a0141f;
+}
+
+.controls .close-btn:focus{
+    outline: none;
+}
+
+
+@media (max-width:768px){
+    
+        .knowmore-modal-body{
+            min-height: 400px;
+            width: 90%;
+            
+            
+        }
+
+        .banner img{
+            height: 150px;
+            width: 150px;
+            top:-50%;
+
+
+        }
+
+        .knowmore-modal-body .banner{
+            position: absolute;
+            height: 40%;
+            width: 100%;
+        }
+
+        .knowmore-modal-body .content{
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            top:40%;
+        }
+
+}
+

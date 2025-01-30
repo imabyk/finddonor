@@ -1,0 +1,135 @@
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/css/user-dashboard/dashboard.css">
+    <link rel="stylesheet" href="/public/css/user-dashboard/analytic-chart.css">
+    <link rel="stylesheet" href="/public/css/user-dashboard/analytic-table.css">
+    <link rel="stylesheet" href="/public/css/user-dashboard/setting.css">
+    <link rel="stylesheet" href="/public/css/user-dashboard/navbar-dashboard.css">
+</head>
+<%- include header-dashboard.ejs %>
+
+
+
+<section style="min-height: 150vh;">
+    <!-- SIDE NAVIGATIO BAR -->
+    <div class="sidebar">
+        <div class="side-container">
+            <a id="analytics" href="#">Profile</a>
+            <a id="profile" href="#">Edit</a>
+            <a id="settings" href="#">Settings</a>
+        </div>
+    </div>
+
+    <div id="analytics-elements" class="display-none">
+        <%- include analytics.ejs %>
+    </div>
+
+    <div id="profile-elements" class="display-none">
+        <%- include profile.ejs %>
+    </div>
+
+    <div id="settings-elements" class="display-none">
+        <%- include settings.ejs %>
+    </div>
+</section>
+
+
+<script src="/public/js/datatables.js"></script>
+<script src="/public/js/jquery.easypiechart.js"></script>
+<script>
+    $(function () {
+        $('.chart1').easyPieChart({
+            size: 180,
+            barColor: '#00cc00',
+            lineWidth: 6,
+            scaleLength: false,
+            animate: { duration: 3000, enabled: true }
+        });
+        $('.chart2').easyPieChart({
+            size: 140,
+            barColor: '#ff8000',
+            lineWidth: 6,
+            scaleLength: false,
+            animate: { duration: 3000, enabled: true }
+        });
+        $('.chart3').easyPieChart({
+            size: 100,
+            barColor: '#d03541',
+            lineWidth: 6,
+            scaleLength: false,
+            animate: { duration: 3000, enabled: true }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#dashboardTable').DataTable({
+            "pageLength": 4,
+            "info": false,
+            "ordering": false,
+            "bLengthChange": false,
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#analytics-elements").removeClass("display-none");
+        $("#profile-elements").addClass("display-none");
+        $("#settings-elements").addClass("display-none");
+
+        $('#analytics').click(function () {
+            $("#analytics-elements").removeClass("display-none");
+            $("#profile-elements").addClass("display-none");
+            $("#settings-elements").addClass("display-none");
+        });
+
+        $('#profile').click(function () {
+            $("#analytics-elements").addClass("display-none");
+            $("#profile-elements").removeClass("display-none");
+            $("#settings-elements").addClass("display-none");
+        });
+
+        $('#settings').click(function () {
+            $("#analytics-elements").addClass("display-none");
+            $("#profile-elements").addClass("display-none");
+            $("#settings-elements").removeClass("display-none");
+        });
+
+    });
+
+</script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function () {
+        readURL(this);
+    });
+</script>
+
+
+ <!--PRELOADER SCRIPT-->
+ <script>
+    let preloaderWrapper = document.querySelector('.preloader-wrapper');
+
+    window.addEventListener('load', function () {
+        // spinnerWrapper.style.display = 'none';
+        preloaderWrapper.parentElement.removeChild(preloaderWrapper);
+    });
+</script>
+
+    
+</body>
+
+</html>

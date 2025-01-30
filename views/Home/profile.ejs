@@ -1,0 +1,175 @@
+<head>
+    <link rel="stylesheet" href="/public/css/user-dashboard/pic-upload.css">
+    <style>
+        .makedisable {
+            pointer-events: none; 
+            opacity: 0.4;
+        }
+
+        .msgalerts {
+            margin-left: 20px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<% if(msg.length>1){ %>
+<script src="/public/js/sweetalert.js"></script>
+<link rel="stylesheet" href="/public/css/sweetalert.css">
+
+
+
+<script type="text/javascript">
+
+    JSalert();
+    function JSalert() {
+
+        swal("Profile Update Successfully!", "success");
+        $(".confirm").html("Done")
+    }
+</script>
+<% } %>
+<div class="card-wrapper">
+    <div class="card-form">
+        <h2>Edit your details here.</h2>
+
+
+        <!-- EDIT IMAGE SECTION -->
+
+        <div class="card" style="display: none;">
+            <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview" style="background-image: url(/public/img/abc.jpg);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-conteniar">
+            <form action="/updateprofile" method="post" class="form-wrapper">
+                <input type="text" id="id" name="id" value="<%= user._id %>" hidden />
+                <div class="input-name">
+                    <i class="fa fa-user lock"></i>
+                    <input type="text" placeholder="First Name" class="name" name="firstname"
+                        value="<%= user.name.split(' ')[0] %>" minlength="3" style="text-transform: capitalize;" required />
+                    <span class="last">
+                        <i class="fa fa-user lock"></i>
+                        <input type="text" placeholder="Last Name" class="name" name="lastname"
+                            value="<%= user.name.split(' ')[1] %>" minlength="3" style="text-transform: capitalize;" required />
+                    </span>
+                </div>
+                <div class="input-name">
+                    <select class="dropdown" name="bloodgroup" required>
+                        <option value="<%=user.bloodgroup %>"><%=user.bloodgroup %></option>
+                        <option value="A+">A+</option>
+                        <option value="B+">B+</option>
+                        <option value="O+">O+</option>
+                        <option value="AB+">AB+</option>
+                        <option value="A-">A-</option>
+                        <option value="B-">B-</option>
+                        <option value="O-">O-</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+                <div class="input-name">
+                    <br> 
+                    <h5>Your contact details:</h5>
+                </div>
+
+                <div class="input-name">
+                    <i class="fa fa-phone lock"></i>
+                    <input type="text" name="mobileno" placeholder="Mobile No." class="text-name mobilenos"
+                            maxlength="10" minlength="10" value="<%= user.mobileno %>"
+                        onkeyup="checkmobileupdate()" required />
+                </div>
+                <p id="alert-phone" class="msgalerts"></p>
+
+                <div class="input-name">
+                    <i class="fa fa-envelope email"></i>
+                    <input type="email" placeholder="Email" id="email" name="email" value="<%= user.email %>"
+                        onkeyup="checkemailupdate()" required class="text-name">
+                </div>
+                <p id="alert-email" class="msgalerts"></p>
+
+                <div class="input-name">
+                    <br>
+                    <h5>Your address details:</h5>
+                </div>
+
+                <div class="input-name">
+                    <select name="state" onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="states dropdown" required></select>
+                    <div class="arrow"></div>
+                </div>
+
+                <div class="input-name">
+                    <select name="district" id ="state" class="cities dropdown" required>
+                        <option>Select District</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+                <script language="javascript">print_state("sts");</script>
+
+                <div class="input-name">
+                    <input type="text" name="city" placeholder="Enter City" class="text-name text-city" style="text-transform: capitalize;" required />
+                </div>
+
+                <div class="input-name">
+                    <button class="button" id="changesave" type="submit"> Save Changes </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function checkmobileupdate() {
+        data = {};
+        data.mobileno = $(".mobilenos").val();
+        data.id = document.getElementById("id").value;
+        $.ajax({
+            url: "/checkmobilenoupdate",
+            method: "POST",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                if (response == "yes") {
+                    document.getElementById('alert-phone').innerHTML = "Sorry This mobile number is already in use";
+                    document.getElementById('changesave').className = "button makedisable";
+                } else {
+                    document.getElementById('alert-phone').innerHTML = "";
+                    document.getElementById('changesave').className = "button";
+
+                }
+            }
+        });
+    }
+    function checkemailupdate() {
+        data = {};
+        data.email = document.getElementById("email").value;
+        data.id = document.getElementById("id").value;
+        $.ajax({
+            url: "/checkemailupdate",
+            method: "POST",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                if (response == "yes") {
+                    document.getElementById('alert-email').innerHTML = "Sorry This email is already in use";
+                    document.getElementById('changesave').className = "button makedisable";
+
+
+                } else {
+                    document.getElementById('alert-email').innerHTML = "";
+                    document.getElementById('changesave').className = "button halfcircle";
+
+                }
+            }
+        });
+    }
+</script>

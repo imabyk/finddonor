@@ -1,0 +1,190 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/public/css/register.css">
+    <style>
+        .makedisable {
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .msgalerts {
+            margin-left: 20px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+
+<%- include header.ejs %>
+<% if(msg.length>1){ %>
+<script src="/public/js/sweetalert.js"></script>
+<link rel="stylesheet" href="/public/css/sweetalert.css">
+
+
+
+<script type="text/javascript">
+
+    JSalert();
+    function JSalert() {
+
+        swal("Thanks for being a donor!", "Your contribution will bring happiness in many lives.", "success");
+        $(".confirm").html("Proceed to Dashboard")
+    }
+
+    $("#proceed").click(function () {
+        data = {};
+        data.mobileno = "<%= mobileno %>"
+        data.password = "<%= password %>"
+
+        $.ajax({
+            url: "/login",
+            method: "POST",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                window.location = "/dashboard"
+            }
+        });
+    })
+</script>
+
+
+<%}%>
+
+<section style=" min-height: 30vh;">
+
+</section>
+<div class="container-fluid containerwrapper">
+    <div class="row">
+        <div class="col-sm-6 pictureup">
+            <div class="hot">
+
+                <div class="row justify-content-end quote">
+                    <h1 class="col-sm-10 col-12 align-self-center">
+                        Your droplets of blood may create an ocean of happiness.
+                    </h1>
+                </div>
+                <div class="row justify-content-center">
+                    <img class="col-12 mediumsize align-self-center" src="/public/img/slides/pic2.png" />
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-5 mt-5">
+
+            <form class="register-form" action="/register" method="post">
+                <div class="form-group row justify-content-center">
+                    <div class="col-sm-6 col-12">
+                        <h1 class="registerhere">Register Here</h1>
+                    </div>
+                </div>
+
+                <div class="form-group row no-gutters justify-content-center ">
+                    <div class="col-sm-1 col-1 align-self-center">
+                        <i class="fa fa-user lock halfcircle"></i>
+                    </div>
+                    <div class="col-sm-4 col-4">
+                        <input type="text" class="form-control align-self-center halfcircle" id="firstname"
+                        name="firstname" placeholder="Firstname" minlength="3" maxlength="15" style="text-transform: capitalize;" required/>
+                    </div>
+                    
+                    <div class="col-sm-1 col-1 offset-1 align-self-center">
+                        <i class="fa fa-user lock halfcircle"></i>
+                    </div>
+                    <div class="col-sm-4 col-4">
+                        <input type="text" class="form-control  align-self-center halfcircle"
+                        id="lastname" name="lastname" minlength="3" maxlength="15" style="text-transform: capitalize;" placeholder="Lastname"/>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    <select class="col-sm-11 col-11 align-self-center halfcircle dropdown" name="bloodgroup" required>
+                        <option value="">Select your blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="form-group row no-gutters justify-content-center">
+                    <div class="col-sm-1 col-1 align-self-center">
+                        <i class="fa fa-phone lock halfcircle"></i>
+                    </div>
+                    
+                    <input class="form-control col-sm-10  col-10 align-self-center halfcircle"
+                        placeholder=" Enter mobile number" name="mobileno" type="text" id="mobileno"
+                        onkeyup="checkmobile()" minlength="10" maxlength="10" required />
+
+                </div>
+                <p id="alert-phone" class="msgalerts"></p>
+
+
+                <div class="form-group row justify-content-center">
+                    <input type="email" class="form-control col-sm-11 col-11 align-self-center halfcircle" id="email"
+                        name="email" placeholder="Email Address (optional)" onkeyup="checkemail()"/>
+                </div>
+                <p id="alert-email" class="msgalerts"></p>
+
+          
+                <div class="form-group row justify-content-center">
+                    <select class="col-sm-11 col-11 align-self-center halfcircle dropdown" name="country" required>
+                        <option value="India">India</option>
+                    </select>
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    <select class="col-sm-11 col-11 align-self-center halfcircle dropdown" name="state" onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="states dropdown" required></select>
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    <select class="col-sm-11 col-11 align-self-center cities halfcircle dropdown" name="district" id ="state" class="cities dropdown" required>
+                        <option>Select District</option>
+                    </select>
+                </div>
+                <script language="javascript">print_state("sts");</script>
+
+                <div class="form-group row justify-content-center">
+                    <input type="text" class="form-control col-sm-11 col-11 align-self-center halfcircle" id="city" style="text-transform: capitalize;"
+                        name="city" placeholder="Enter City" required/>
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    <input type="password" class="form-control col-sm-11 col-11 align-self-center halfcircle"
+                        id="password" name="password" placeholder="Password" minlength="4" required/>
+                </div>
+
+                <div class="form-group row justify-content-center ">
+                    <div class="col-sm-11 col-11">
+                        <h4><input type="checkbox" name="agreementbtn" value="agree" class="mr-2" required>By continuing you agree to our <a href="/terms">Terms & Conditions</a> and <a href="/privacy">Privacy Policy.</a></h4>
+                    </div>
+                    
+                </div>
+                <div class="form-group row justify-content-center">
+                        <button  id="signup" class="btn btn-block col-sm-11 col-11 register-btn">Become a donor</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+
+
+
+
+<%- include footer.ejs %>

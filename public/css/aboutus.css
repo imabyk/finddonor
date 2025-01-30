@@ -1,0 +1,110 @@
+
+
+.theme h1{
+    color: #d03541;
+    font-size: 3em;
+    justify-content: center;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+
+
+.theme p{
+    font-size: 2.2rem;
+    color:#706f6f;
+}
+
+.imagesize{
+    max-width: 450px;
+    max-height: 450px;
+    animation: f1 3s infinite linear;
+}
+
+.wrappercontainer{
+    margin-top: 100px;
+}
+
+.rowmargin{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.wrappercontainer .aboutmargin {
+    margin-bottom: 40px;
+}
+
+.wrappercontainer h2{
+    font-size: 4.2em;
+    color: #d03541;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media only screen and (max-width:575px)
+  {
+    .wrappercontainer h2{
+        font-size: 3.5em;
+    }
+    .imagesize{
+        max-width: 300px;
+        max-height: 3000px;
+    }
+
+    .theme h1 p{
+        text-align: center;
+    }
+
+    .theme p{
+        font-size: 16px;
+        line-height:22.8571px;
+        vertical-align:baseline;
+        letter-spacing:normal;
+        word-spacing:0px;
+        margin:20px;
+        padding:0px;
+    }
+
+    .theme h1{
+        font-size: 28px;
+        text-decoration:none solid rgb(194, 26, 39);
+        line-height:40px;
+        vertical-align: baseline;
+        letter-spacing:normal;
+        word-spacing:0px;
+        margin:18.76px 0px;
+        padding:0px;
+        text-align: center;
+        font-weight: 500;
+    }
+  }
+
+@media only screen and (max-width:768px) and (min-width:576px){
+    .imagesize{
+        max-width: 260px;
+        max-height: 260px;
+    }
+}
+
+@media only screen and (max-width:992px) and (min-width:769px){
+    .imagesize{
+        max-width: 260px;
+        max-height: 260px;
+    }
+}
+
+@media only screen and (max-width:992px) and (min-width:769px){
+    .imagesize{
+        max-width: 280px;
+        max-height: 280px;
+    }
+}
+
+@media only screen and (max-width:1200px) and (min-width:993px){
+    .imagesize{
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+

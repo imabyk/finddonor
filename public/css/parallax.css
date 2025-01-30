@@ -1,0 +1,222 @@
+
+
+
+#sm-banner{
+  display: none; 
+}
+
+.sm-banner-txt{
+  display: none;
+}
+
+
+.sec-height{
+  min-height: 100vh; 
+  background-color: #d03541;
+}
+
+.banner-text{
+  color:#fff;
+  padding-top: 7vh;
+  font-size: 3.5em;
+  font-weight: 500;
+  font-family: Poppins;
+}
+
+.parallax{
+  position: relative;
+  padding-top: 15vh;
+  width: 100%;
+  background-size: cover;
+}
+#pos-flask,#pos-tube,#pos-bdropL,#pos-bdropR,#pos-bag,#pos-paper{
+  pointer-events: none;
+}
+.foreground{
+  z-index: 80;
+}
+
+.middle{
+  z-index: 79;
+}
+
+.background{
+  z-index: 78;
+}
+
+.flask, .bag, .paper, .tube, .bdrops{
+  width: 100%;
+}
+
+.flask{
+  position:  absolute;
+  top: 0;
+  animation: f1 5s infinite linear;
+}
+
+.bag{
+  position: absolute;
+  top: 0;
+  animation: f1 4s infinite linear;
+}
+
+.paper{
+  position: absolute;
+  top: 0;
+  animation: f1 6s infinite linear;
+}
+
+.tube{
+  position: absolute;
+  top: 0;
+  animation: f1 5s infinite linear;
+}
+
+.bdropL{
+  position: absolute;
+  top: 0;
+  animation: f1 4s infinite linear;
+}
+.bdropR{
+  position: absolute;
+  top: 0;
+  animation: f1 3s infinite linear;
+}
+
+.banner-btn{
+  color: #fff;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing:3px;
+  height:50px;
+  width: 100px;
+  border-radius: 5px;
+  border: 3px solid #fff;
+  font-family: Poppins;
+  transition: 0.3s;
+}
+
+.banner-btn:hover{
+  color: #d03541;
+  background-color: #fff;
+}
+@media screen and (max-width:1440px){
+  .banner-text{
+    font-size: 4em;
+  }
+
+}
+@media screen and (max-width:768px){
+
+  #md-banner{
+    display: none;
+  }
+
+  #sm-banner{
+    display: contents;
+  }
+
+  .pos-top{
+    margin-top: 75%;
+    
+  }
+
+  .sm {
+    width: 100%;
+  }
+
+  .banner-pos{
+    margin-top: -8vh;
+  }
+  .sec-height{
+      min-height: 150vh;
+      align-items: center;
+      align-content: center;
+  }
+  #pos-flask,#pos-tube,#pos-bdropL,#pos-bdropR,#pos-bag,#pos-paper
+  {
+      width: 170%;
+      padding-top: 40vh;
+      align-content: center;
+      justify-content: center;
+  }
+  #pos-tube{
+    margin-left: -10px;
+    padding-top: 45vh;
+  }
+
+  #pos-flask{
+    margin-left: -75px;
+    padding-top: 45vh;
+  }
+
+  #pos-bdropL{
+    margin-left: -40px;
+  }
+  #pos-bdropR{
+    margin-left: -100px;
+  }
+
+  #pos-paper{
+    margin-left: -50px;
+    width: 170%;
+  }
+
+  #pos-bag{
+    margin-left: -150px;
+    width: 180%;
+  }
+
+  .banner-btn{
+      pointer-events: all;
+      margin-left: 35%;
+      margin-top: -15px;
+      z-index: 81;
+  }
+  .banner-text{
+      text-align: center;
+      font-size: 3.3em;
+      top: 1vh;
+}
+}
+
+@media screen and (max-width:576px){
+  .sec-height{
+      min-height: 100vh;
+      align-items: center;
+      align-content: center;
+  }
+  #para{
+      padding-top: 40vh;
+      align-content: center;
+      margin-left: 50px;
+  }
+  .banner-text{
+      font-size: 2.7em;
+      text-align: center;
+      margin-top:0vh
+   
+
+  }
+}
+
+@media screen and (max-width: 350px){
+  .banner-text{
+    font-size: 2.5em;
+    text-align: center;
+    top: 1vh;
+  }
+}
+
+
+@keyframes f1{
+  30%{
+    transform: translateY(10px) rotate(2deg);
+  }
+  70%{
+    transform: translateY(10px) rotate(-2deg);
+  }
+}
+

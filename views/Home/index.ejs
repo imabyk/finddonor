@@ -1,0 +1,332 @@
+<%- include header.ejs%>
+<%- include parallax.ejs%>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/public/js/newsweetalert.js"></script>
+<link rel="stylesheet" href="/public/css/newsweetalert.css">
+<!-- <script type="text/javascript">
+
+  JSalert();
+  function JSalert() {
+
+    swal("SAVE LIVES WITH PLASMA!", "If you have recovered from COVID-19 you can join the war against the virus.");
+    $(".confirm").html("Register as Plasma Donor");
+    $(".plasma").html("Find Plasma Donor");
+    $(".cancel").html("Close");
+  }
+  $("#plasmadonor").click(function () {
+        window.location = "/plasma_donor"
+    });
+  $("#plasmarecipient").click(function () {
+      window.location = "/plasma_recipient"
+  });
+</script> -->
+
+<head>
+
+  <link rel="stylesheet" href="/public/css/donor-form.css">
+  <link rel="stylesheet" href="/public/css/bootstrap-mod.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" />
+  <link rel="stylesheet" href="/public/css/slider.css" />
+  <link rel="stylesheet" href="/public/css/home-page-info.css">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+
+</head>
+<section class="main" id="find_a_donor">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-5 order-md-2">
+        <div class="wrapper">
+
+          <div class="form-container">
+            <h2>Want Donors? Just Fill The Form.</h2>
+            <form action="/" method="post">
+              <div class="input-name">
+                <i class="fa fa-user lock"></i>
+                <input type="text" placeholder="First Name" class="form-name" name="firstname" minlength="3"
+                  style="text-transform: capitalize;" required />
+                <span class="last">
+                  <i class="fa fa-user lock"></i>
+                  <input type="text" placeholder="Last Name" class="form-name" name="lastname" minlength="3"
+                    style="text-transform: capitalize;" required />
+                </span>
+              </div>
+              <div class="input-name">
+                <select class="dropdown" name="bloodgroup" required>
+                  <option value="">Blood Group</option>
+                  <option value="A+">A+</option>
+                  <option value="B+">B+</option>
+                  <option value="O+">O+</option>
+                  <option value="AB+">AB+</option>
+                  <option value="A-">A-</option>
+                  <option value="B-">B-</option>
+                  <option value="O-">O-</option>
+                  <option value="AB-">AB-</option>
+                </select>
+                <div class="arrow"></div>
+              </div>
+
+              <div class="input-name">
+                <i class="fa fa-phone lock"></i>
+                <input type="text" name="mobileno" placeholder="Mobile Number" class="text-name" maxlength="10"
+                  minlength="10" required />
+              </div>
+
+              <div class="input-name ">
+
+                <select name="state" onchange="print_city('state', this.selectedIndex);" id="sts" name="stt"
+                  class="states dropdown m-box" required></select>
+
+                <span class="last">
+                  <select name="country" class="countries dropdown m-box">
+                    <option value="India">India</option>
+                  </select>
+                </span>
+
+              </div>
+
+              <div class="input-name">
+                <select name="district" id="state" class="cities dropdown" required>
+                  <option>Select District</option>
+                </select>
+                <div class="arrow"></div>
+              </div>
+              <script language="javascript">print_state("sts");</script>
+              <div class="input-name">
+                <input type="text" name="city" placeholder="Enter City" class="text-name text-city"
+                  style="text-transform: capitalize;" required />
+              </div>
+              <div class="input-name">
+                <input type="checkbox" id="cb1" class="chack-button" required />
+                <label for="cb1" class="chack">By continuing you agree to our <a href="/terms">Terms & Conditions</a>
+                  and <a href="/privacy">Privacy Policy.</a></label>
+              </div>
+              <div class="input-name">
+                <button class="button" type="submit"> Search donor </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7 order-md-1">
+        <div class="container">
+          <div class="slide-container slide1">
+            <div class="row">
+              <div class="col-md-4 pr-md-0">
+                <div class="img-container">
+                  <div class="img-wrapper">
+                    <div class="background"></div>
+                    <img src="/public/img/slides/pic1.png" alt="" />
+                  </div>
+                  <div class="img-wrapper">
+                    <div class="background"></div>
+                    <img src="/public/img/slides/pic2.png" alt="" />
+                  </div>
+                  <div class="img-wrapper">
+                    <div class="background"></div>
+                    <img src="/public/img/slides/pic3.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide p-md-5 p-3">
+                      <div class="name">
+                        <div class="sub-title">
+                          <div class="text-wrapper">
+                            <span>Fact 1</span>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="overview">
+                        <div class="row">
+                          <div class="col-md-11 offset-md-1">
+                            <div class="text-wrapper">
+                              <span>
+                                <p class="description">
+                                  Blood makes up around 7% of the weight of a human body.
+                                </p>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="know-more">
+                        <a href="/blood-facts"><button class="know-more-btn">Know More</button></a>
+                      </div>
+                    </div>
+                    <!--                  -->
+                    <div class="swiper-slide p-md-5 p-3">
+                      <div class="name">
+                        <div class="sub-title">
+                          <div class="text-wrapper">
+                            <span>fact 2</span>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="overview">
+                        <div class="row">
+                          <div class="col-md-11 offset-md-1">
+                            <div class="text-wrapper">
+                              <span>
+                                <p class="description">
+                                  Being a regular donor may help with blood flow and reduce arterial blockages.
+                                </p>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="know-more">
+                        <a href="/blood-facts"><button class="know-more-btn">Know More</button></a>
+                      </div>
+                    </div>
+                    <!--                  -->
+                    <div class="swiper-slide p-md-5 p-3">
+                      <div class="name">
+                        <div class="sub-title">
+                          <div class="text-wrapper">
+                            <span>fact 3</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="overview">
+                        <div class="row">
+                          <div class="col-md-11 offset-md-1">
+                            <div class="text-wrapper">
+                              <span>
+                                <p class="description">
+                                  There are 8 millions bloodbanks around the globe.
+                                </p>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="know-more">
+                        <a href="/blood-facts"><button class="know-more-btn">Know More</button></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- pagination -->
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- INFO SECTION  -->
+<div class="container-fluid">
+  <div class="container">
+    <div class="content-padder">
+      <div class="row">
+        <div class="col-md-12 main-txt-container">
+          <h1>
+            Be a part of our motive.
+          </h1>
+          <h2>
+            Join our moto and help us in saving more lives.
+          </h2>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content-padder">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="img-container">
+            <img src="/public/img/img-hp-1.png" alt="" srcset="">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="v-content">
+            <h1 class="v-heading"><i class="fa fa-heartbeat" aria-hidden="true"></i> You can be someone's hope</h1>
+            <p class="v-para">In as little as a few minutes, you can become someone's hero. Donate Blood or share our
+              moto, every form of contribution you make is important, valued, and essential in our shared mission to
+              save lives.
+              <br><br>
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content-padder">
+      <div class="row">
+
+
+        <div class="col-md-6 order-md-2">
+          <div class="img-container">
+            <img src="/public/img/img-hp-2.png" alt="" srcset="">
+          </div>
+        </div>
+
+
+        <div class="col-md-5 order-md-1">
+          <div class="v-content">
+            <h1 class="v-heading"><i class="fa fa-clock-o" aria-hidden="true"></i> Answers to emergency</h1>
+            <p class="v-para">As soon as a new blood request is raised, our automated system sends notification directly
+              via SMS (text message) and e-mail to your nearest blood donors and volunteers who are available at that
+              time.<br><br>
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content-padder">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="img-container">
+            <img src="/public/img/img-hp-3.png" alt="" srcset="">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="v-content">
+            <h1 class="v-heading"><i class="fa fa-user" aria-hidden="true"></i> Made for everyone</h1>
+            <p class="v-para">All you need to do is to post a request on our website, and fill the required details. Our
+              system is smart enough to understand anything you write and helps you find a donor within seconds.<br><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<section style="min-height: 25vh;"></section>
+
+
+<!-- CAROUSEL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://geodata.solutions/includes/countrystatecity.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="/public/js/slider.js"></script>
+
+<%- include footer.ejs%>

@@ -1,0 +1,51 @@
+<head>
+	<link rel="stylesheet" href="/public/css/info/contact-form.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/public/js/sweetalert.js"></script>
+	<link rel="stylesheet" href="/public/css/sweetalert.css">
+
+</head>
+<%- include ../Home/header.ejs %>
+<section style="min-height: 30vh;"></section>
+<section class="contact-section">
+<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="contact-img-wrapper">
+					<img src="/public/img/contact-form.png" alt="" srcset="">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12"> 
+				<div class="contact-form-wrapper">
+						<div class="contact-box">
+							<h2>Contact Us</h2>
+			
+							<form action="/contact" method="post">
+									<input type="text" name="name" class="field" placeholder="Your Name" required/>
+									<input type="text" name="email" class="field" placeholder="Your Email" required/>
+									<textarea placeholder="Message" name="message" class="field" required></textarea>
+									<button id="contactbtn" class="btn">Send</button>		
+							</form>
+		
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</section>
+<% if(msg.length >1){ %>
+<script>
+
+	JSalert();
+	function JSalert() {
+
+		swal("Thanks for Contacting Us!", "Mail has been sent to Admins.we will reply you soon", "success");
+		$(".confirm").html("Continue")
+
+	}
+
+</script>
+<%}%>
+<%- include ../Home/footer.ejs %>

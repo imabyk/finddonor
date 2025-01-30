@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900$display=swap');
+
+*{
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+body{
+    justify-content: center;
+    font-family: 'poppins';
+}
+.tableContainer{
+    position: absolute;
+    left: 20%;
+    top: 60%;
+    width: 60%; 
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64,64,64,.7);
+    overflow: hidden;
+    color: #6b1920;
+}
+#search{
+    border:0;
+}
+
+
+.search-box td{
+    padding: 15px 20px;
+    text-align: center;
+}
+.search-box table{
+    width: 100%;
+    position: absolute;
+    left: 20%;
+    margin-top:10px;
+    width: 60%; 
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64,64,64,.7);
+    overflow: hidden;
+    color: #6b1920;
+}
+.search-box th{
+    background-color: #d03541;
+    color: #fafafa;
+    font-family: 'Poppins',Sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: .6em;
+}
+
+
+.tbl-btn{
+    height: 30px;
+    width: 70px;
+    color: #fff;
+    background-color: #d03541;
+    border-radius: 5px;
+    border:0px;
+    transition: 0.5s ease;
+    font-size: 0.9em;
+
+}
+
+.tbl-btn:hover{
+    background-color: #a50d19;
+    
+}
+
+.table-result table{
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    width: 60%; 
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64,64,64,.7);
+    overflow: hidden;
+    color: #6b1920;
+
+}
+.table-result td ,.table-result  th{
+    padding: 15px 20px;
+    text-align: center;
+    
+
+}
+
+.table-result th{
+    background-color: #d03541;
+    color: #fafafa;
+    font-family: 'Poppins',Sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+
+}
+.table-result tr{
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Poppins', sans-serif;
+}
+.table-result tr:nth-child(even){
+    background-color: #eeeeee;
+}

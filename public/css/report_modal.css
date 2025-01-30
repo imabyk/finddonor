@@ -1,0 +1,152 @@
+select:hover{
+    border: 1px solid #c43642 !important;
+}
+
+.halfcircle:focus{
+    box-shadow:0 0 1px 1px #c436429d;
+}
+
+.halfcircle{
+    border-radius: 0px !important;
+    height: 35px !important;
+    border: 1px solid #cccccc !important;
+    font-size: 1em;
+}
+
+textarea:hover{
+    border: 1px solid #c43642 !important;
+}
+
+textarea:focus{
+    box-shadow:0 0 1px 1px #c436429d;
+}
+
+textarea{
+    border: 1px solid #cccccc !important;
+    min-width: 410px;
+  
+}
+
+.titlered{
+    background-color: #d03541;
+    text-align: center;
+}
+
+.titlered h4{
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.modalbg{
+    border-radius: 10px;
+    box-shadow:1px 1px 20px 2px #8a8a8a;
+}
+
+.close-btn{
+    font-size: 2em;
+    color: #fff;
+    opacity: .8;
+}
+
+.close-btn:hover{
+    opacity: 1;
+    color: #fff;
+}
+
+.name-mob{
+    margin: 25px;
+}
+.name-mob{
+    font-size: 1.3em;
+    color: rgb(104, 98, 98);
+}
+
+h5{
+    font-size: 1em;
+    color: rgb(104, 98, 98);
+}
+
+.report-modal-btn{
+    background: #d03541;;
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    transition: all ease 0.5s;
+    
+  }
+.report-modal-btn:hover{
+      background-color: #c43642;
+  }
+
+  .dropdown-div{
+    width: 100%;
+  }
+
+  .dropdown{
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    padding: 0px 15px;
+    cursor: pointer;
+    color: #7b7b7b;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.2s ease;
+}
+.dropdown::-ms-expand{
+    display: none;
+}
+
+.dropdown:hover{
+    color: rgb(90, 88, 88);
+      background: #fafafa;
+      border-color: #d03541;
+      outline: none;
+}
+
+.dropdown:focus{
+    box-shadow:0 0 1px 1px #c436429d;
+}
+
+.arrow {
+    position: absolute;
+    top: calc(50% - 4px);
+    margin-right: 10px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-width: 8px 5px 0 5px;
+    border-style: solid;
+    border-color: #7b7b7b transparent transparent transparent;
+ }
+
+@media screen and (max-width: 500px){
+    textarea{
+    min-width: 295px;
+    }
+}
+
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.modal-fadeIn{
+    animation: fadeIn .5s 0s backwards;
+}
